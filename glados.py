@@ -25,7 +25,7 @@ if __name__ == '__main__':
         checkin = requests.post(url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent,'content-type':'application/json;charset=UTF-8'},data=json.dumps(payload))
         state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
     #--------------------------------------------------------------------------------------------------------#  
-        print('checkin----结果--'+checkin+'state----结果'+state)
+        print('checkin----结果--'+checkin.text+'state----结果'+state.text)
         email = state.json()['data']['email']
         if 'message' in checkin.text:
             mess = checkin.json()['message']
