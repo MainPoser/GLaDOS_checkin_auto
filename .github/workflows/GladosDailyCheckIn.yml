@@ -1,5 +1,5 @@
 
-name: 开始每日签到
+name: Daily Check-in
 
 on:
   workflow_dispatch:
