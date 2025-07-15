@@ -25,12 +25,12 @@ if __name__ == '__main__':
         checkin = requests.post(url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent,'content-type':'application/json;charset=UTF-8'},data=json.dumps(payload))
         state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
     #--------------------------------------------------------------------------------------------------------#  
-        print('checkin----结果--'+checkin.text+'state----结果'+state.text)
+        print('checkin----结果--\n'+checkin.text+'\n')
+        print('state----结果--\n'+state.text+'\n')
         email = state.json()['data']['email']
+        time = state.json()['data']['leftDays']
         if 'message' in checkin.text:
             mess = checkin.json()['message']
-            #time = state.json()['data']['leftDays']
-            #time = time.split('.')[0]
             print(email+'----结果--'+mess+'----剩余('+time+')天')  # 日志输出
             sendContent += email+'----'+mess+'----剩余('+time+')天\n'
         else:
